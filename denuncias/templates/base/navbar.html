@@ -1,0 +1,23 @@
+{% load static %}
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'imagem/logo.png' %}" alt="Logo ToVerde">
+        </div>
+
+        <nav class="nav-links" id="menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'fazerdenuncias' %}">Denúncias</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            {% if user.is_authenticated %}
+            <span class="user-greeting">Olá, <strong>{{ user.username }}</strong></span>
+            <a href="{% url 'logout' %}" class="cta-button logout">Sair</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="cta-button">Login</a>
+            {% endif %}
+        </div>
+</header>

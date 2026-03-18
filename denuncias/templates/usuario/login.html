@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% block body %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <i class="fas fa-lock"></i>
+            <h2>Acesse sua Conta</h2>
+        </div>
+        {% if messages %}
+    {% for message in messages %}
+        <div style="color: red; text-align: center; margin-bottom: 15px; font-weight: bold;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+        <form action="/login/" method="POST" id="loginForm">
+            <div class="auth-group">
+                {% csrf_token %} <label for="email">E-mail do usuário</label>
+                <input type="email" id="email" name="email" placeholder="nome@email.com" required
+                    autocomplete="username">
+            </div>
+
+            <div class="auth-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required
+                    autocomplete="current-password">
+            </div>
+
+            <div class="auth-options">
+                <label>
+                    <input type="checkbox" name="remember" id="remember">
+                    Lembrar-me
+                </label>
+                <a href="{% url 'reset_password' %}" class="forgot-link">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+        </form>
+
+        <div class="auth-register-link">
+            <p>Novo por aqui? <a href="{% url 'register' %}">Crie uma conta</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container mx-auto p-4 max-w-4xl">
+    <div class="fazerdenuncia-01">
+        <h1><i class="fas fa-leaf"></i> Fazer Denúncia Ambiental</h1>
+        <p>Ajude a proteger o meio ambiente relatando ocorrências de forma simples e rápida.</p>
+    </div>
+
+    <div class="form-section">
+        <form id="denunciaForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                Por favor, corrija os erros abaixo.
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.tipo_ocorrencia.id_for_label }}">Tipo de ocorrência</label>
+                {{ form.tipo_ocorrencia }}
+                {{ form.tipo_ocorrencia.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                {{ form.descricao }}
+                {{ form.descricao.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.data_ocorrencia.id_for_label }}">Data da ocorrência</label>
+                {{ form.data_ocorrencia }}
+                {{ form.data_ocorrencia.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.localizacao.id_for_label }}">
+                    <i class="fas fa-map-marker-alt"></i> Localização (Endereço)
+                </label>
+                {{ form.localizacao }}
+                {{ form.localizacao.errors }}
+
+                <div class="map-container" style="margin-top: 15px;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2962555865647!2d-43.1728965!3d-22.9068467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f58a6a00a9d%3A0x3f251d85272f76f7!2sRio%20de%20Janeiro%2C%20RJ!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="upload-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Clique ou arraste e solte fotos/vídeos aqui (máx. 5MB)</p>
+                    {{ form.foto }}
+                </label>
+                {{ form.foto.errors }}
+            </div>
+
+            <div class="form-group">
+                <label class="flex items-center space-x-2">
+                    {{ form.anonima }}
+                    <span>Enviar de forma anônima</span>
+                </label>
+                {{ form.anonima.errors }}
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Enviar denúncia
+            </button>
+        </form>
+    </div>
+
+    <div class="privacy-notice">
+        <p>
+            <i class="fas fa-lock"></i>
+            <strong>As denúncias podem ser feitas de forma anônima.</strong><br>
+            Sua identidade será mantida em sigilo.
+        </p>
+    </div>
+</div>
+
+<!-- O JavaScript que cuida do toggle de mapa/lista -->
+<script src="{% static '/js/denuncia.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,1244 @@
+/* ==================================== */
+/* 1. VARIÁVEIS CSS (ROOT) */
+/* ==================================== */
+
+:root {
+    /* Cores Principais (Identidade Ecológica) */
+    --color-primary-dark: #2f9219;
+    /* Verde Principal Escuro */
+    --color-primary-medium: #4caf50;
+    /* Verde Principal Vibrante (CTAs) */
+    --color-primary-light: #e8f5e9;
+    /* Fundo Suave */
+    --color-accent-hover: #1b5e20;
+    /* Verde Profundo para Hover */
+
+    /* Cores Neutras */
+    --color-text-base: #222;
+    /* Texto Geral */
+    --color-text-on-dark: #fff;
+    /* Texto em Fundo Escuro */
+    --color-background-soft: #f8f8f8;
+    /* Fundo Geral Suave */
+    --color-border: #ddd;
+    --color-shadow: rgba(0, 0, 0, 0.15);
+    /* Sombra mais visível para Header/Footer */
+    --cinza-texto: #555555;
+    /* Cor de texto secundário */
+
+    /* Cores Específicas (Greenpeace/Ações) */
+    --color-greenpeace-cta: var(--color-primary-medium);
+    /* Botão "Doe agora" */
+    --color-greenpeace-cta-hover: #388e3c;
+    /* Hover do CTA */
+    --color-greenpeace-search: #9e9e9e;
+    /* Ícone de busca */
+
+    /* Cores para o Footer (Mais escuras) */
+    --footer-bg-start: #124326;
+    --footer-bg-end: #1b5733;
+
+    /* Cores de Status (Denúncias, etc) */
+    --status-analysis: #ffc107;
+    /* Amarelo - Em Análise */
+    --status-resolved: #4caf50;
+    /* Verde - Resolvida */
+    --status-danger: #dc3545;
+    /* Vermelho - Urgência */
+
+    /* Tipografia */
+    --font-family-base: 'Poppins', sans-serif;
+    --fonte-titulo: 'Georgia', serif;
+    /* Fontes de destaque */
+}
+
+/* ==================================== */
+/* 2. RESET E ESTILOS GERAIS */
+/* ==================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-background-soft);
+    color: var(--color-text-base);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1140px;
+    /* Mantendo o valor do header para consistência */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--color-primary-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-medium);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Botão Principal (Geral) */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-on-dark);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
+}
+
+
+/* ==================================== */
+/* 3. HEADER (CABEÇALHO) */
+/* ==================================== */
+
+.header {
+    background-color: var(--color-text-on-dark);
+    color: var(--color-text-base);
+    box-shadow: 0 1px 6px var(--color-shadow);
+    padding: 2px 0;
+    line-height: 1;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+}
+
+/* Logo */
+.logo img {
+    width: 95px;
+    height: auto;
+    display: block;
+}
+
+/* Navegação */
+.nav-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--color-text-base);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 2px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Ações à direita */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botão CTA (Diferente do .btn-primary, mais compacto no header) */
+.cta-button {
+    background-color: var(--color-greenpeace-cta);
+    color: var(--color-text-on-dark);
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: rgba(22, 228, 29, 0.26);
+}
+
+/* Responsividade do Header */
+@media (max-width: 768px) {
+    .header {
+        padding: 6px 0;
+    }
+
+    .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+
+/* ==================================== */
+/* 4. FOOTER (RODAPÉ) */
+/* ==================================== */
+
+footer {
+    background: linear-gradient(180deg, var(--footer-bg-start) 0%, var(--footer-bg-end) 100%);
+    color: #f0f0f0;
+    text-align: center;
+    padding: 35px 15px;
+    border-top: 3px solid var(--color-primary-medium);
+    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-family-base);
+}
+
+/* Textura translúcida suave */
+footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.05), transparent 60%),
+        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.05), transparent 60%);
+    animation: floatPattern 15s infinite alternate ease-in-out;
+    z-index: 0;
+    opacity: 0.35;
+}
+
+/* Animação do padrão sutil */
+@keyframes floatPattern {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* Conteúdo */
+.footer-container {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-container p {
+    margin: 6px 0;
+    font-size: 0.93rem;
+    letter-spacing: 0.4px;
+    color: #f0f0f0;
+    /* Garante a cor clara do texto */
+}
+
+.footer-container strong {
+    color: #81c784;
+    transition: color 0.3s ease;
+}
+
+.footer-container strong:hover {
+    color: #a5d6a7;
+}
+
+
+
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Responsividade do Footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 28px 10px;
+    }
+
+    .footer-container p {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ==================================== */
+/* 5. SEÇÕES DA PÁGINA (HERO, ABOUT, CARDS, MAPA, FEED) */
+/* ==================================== */
+
+section {
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* --- 5.1 Seção HERO --- */
+
+.hero-section {
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.hero-content {
+    height: 600px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('/static/imagem/hero-img.jpg');
+    /* **ATUALIZE ESTE CAMINHO** */
+    background-size: cover;
+    background-position: center center;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    /* Adicionado para empilhar h1 e p */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    max-width: 800px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    color: var(--color-text-on-dark);
+}
+
+.hero-content p {
+    max-width: 800px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--color-text-on-dark);
+}
+
+/* --- 5.2 Seção Sobre Nós (O que fazemos) --- */
+
+.about-us-section {
+    background-color: var(--color-text-on-dark);
+    padding: 40px 0;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 0 30px;
+}
+
+.image-placeholder {
+    flex: 1;
+    min-width: 250px;
+    height: 250px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('/static/imagem/crianca.jpg');
+    /* **ATUALIZE ESTE CAMINHO** */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--color-primary-dark);
+}
+
+.text-and-button {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.text-and-button h2 {
+    text-align: left;
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+}
+
+.text-and-button p {
+    color: var(--cinza-texto);
+}
+
+/* --- 5.3 Cards de Ação (Seção de Pilares) --- */
+
+.cards-section {
+    padding: 40px 0 80px;
+}
+
+.cards-section h2 {
+    margin-bottom: 0.5rem;
+}
+
+.cards-section p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1rem;
+    color: var(--cinza-texto);
+}
+
+.action-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.action-card {
+    background-color: var(--color-text-on-dark);
+    padding: 20px 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-card img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #7dfe6652;
+    border: 2px solid var(--color-primary-medium);
+}
+
+.action-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: var(--color-primary-dark);
+}
+
+.action-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* --- 5.4 Seção de Mapa e Fiscalização --- */
+
+.map-section {
+    background-color: var(--color-text-on-dark);
+    color: var(--color-text-base);
+    padding: 60px 0 50px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    /* Sombra sutil de separação */
+}
+
+.map-section h2 {
+    text-align: left;
+    margin-left: 20px;
+    color: var(--color-primary-dark);
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--color-greenpeace-cta);
+    padding-bottom: 6px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+/* Container do mapa */
+#denuncia-map {
+    margin: 40px auto 0;
+    border: 1px solid var(--color-greenpeace-cta);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 420px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 970px;
+    background-color: #f9f9f9;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 5.5 Seção Feed da Comunidade --- */
+
+.community-feed-section {
+    background-color: var(--color-text-on-dark);
+    padding: 60px 0;
+    color: var(--color-text-base);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.community-feed-section h2 {
+    text-align: left;
+    margin-left: 20px;
+    color: var(--color-primary-dark);
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--color-greenpeace-cta);
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
+/* Grid dos cards */
+.community-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 40px auto 0;
+    max-width: 970px;
+}
+
+/* Card */
+.community-card {
+    background-color: var(--color-text-on-dark);
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.community-card h4 {
+    color: var(--color-greenpeace-cta);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.community-card p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.community-card a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.community-card a:hover {
+    color: var(--color-greenpeace-cta);
+}
+
+
+/* ==================================== */
+/* 6. RESPONSIVIDADE (GERAL) */
+/* ==================================== */
+
+@media (max-width: 992px) {
+
+    /* Container (ajuste no padding) */
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Sobre Nós */
+    .about-content {
+        flex-direction: column;
+        padding: 30px 10px;
+    }
+
+    .image-placeholder {
+        min-width: 100%;
+        height: 200px;
+    }
+
+    .text-and-button h2 {
+        text-align: center;
+    }
+
+    /* Cards de Ação */
+    .action-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Títulos */
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content {
+        height: 350px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* Seções de Título Alinhado */
+    .map-section h2,
+    .community-feed-section h2 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-left: 0;
+        display: block;
+        border-bottom: none;
+        /* remove a linha para telas menores */
+    }
+}
+
+/* ==================================================================== */
+/* 0. CONFIGURAÇÃO GLOBAL E VARIÁVEIS CSS (:root) */
+/* ==================================================================== */
+
+:root {
+    /* Cores Primárias (Verde) */
+    --color-primary-dark: #2f9219;
+    /* Verde Escuro */
+    --color-primary-medium: #4caf50;
+    /* Verde Vibrante */
+    --color-primary-light: #e8f5e9;
+    /* Fundo Suave (Light Green) */
+    --color-accent-hover: #1b5e20;
+    /* Verde Profundo (Hover) */
+
+    /* Cores de Texto e Fundo */
+    --color-text-base: #222;
+    /* Texto principal escuro */
+    --color-text-on-dark: #fff;
+    /* Texto sobre fundos escuros */
+    --color-background-soft: #f8f8f8;
+    /* Fundo geral da página */
+
+    /* Outros Elementos */
+    --color-border: #ddd;
+    /* Cor de borda suave */
+    --color-shadow: rgba(0, 0, 0, 0.15);
+    /* Sombra para caixas */
+
+    /* Fonte Padrão do Sistema */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* Cores de Status para Denúncias */
+    --status-analysis: #ff9800;
+    /* Amarelo/Laranja (Em Análise) */
+    --status-resolved: #388e3c;
+    /* Verde Escuro (Resolvido) */
+    --color-privacy-bg: #fff8e1;
+    /* Fundo amarelo suave para avisos */
+    --color-privacy-border: #ffe082;
+    --color-privacy-icon: #ffb300;
+}
+
+/* ==================================================================== */
+/* 1. ESTILOS DE BASE E UTILITIES */
+/* ==================================================================== */
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-background-soft);
+    color: var(--color-text-base);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    /* Garante que o conteúdo principal ocupe o espaço restante */
+}
+
+/* CLASSE CRÍTICA PARA O TOGGLE: oculta o elemento */
+.hidden {
+    display: none !important;
+}
+
+/* 2. ESTILOS GERAIS DE INPUTS E TEXTAREAS */
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--color-text-base);
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-primary-medium);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==================================================================== */
+/* Z. ESTRUTURA GLOBAL DO SITE (Header, Footer, Nav) */
+/* ==================================================================== */
+
+.site-header {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-on-dark);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.site-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-text-on-dark);
+    display: flex;
+    align-items: center;
+}
+
+.site-logo .icon-leaf {
+    margin-right: 10px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-text-on-dark);
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active-link {
+    color: var(--color-primary-medium);
+    border-bottom: 2px solid var(--color-primary-medium);
+}
+
+.site-footer {
+    background-color: var(--color-primary-dark);
+    color: #a8a8a8;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* ==================================================================== */
+/* A. MÓDULO DE AUTENTICAÇÃO (Login/Registro) */
+/* ==================================================================== */
+
+.auth-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.auth-card {
+    background-color: var(--color-text-on-dark);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px var(--color-shadow);
+    width: 100%;
+    max-width: 400px;
+    border-bottom: 5px solid var(--color-primary-medium);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.auth-header .auth-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary-medium);
+}
+
+.auth-group {
+    margin-bottom: 20px;
+}
+
+.auth-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--color-text-base);
+}
+
+.auth-group input[type="email"],
+.auth-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--color-text-base);
+    background-color: var(--color-text-on-dark);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.auth-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+
+.auth-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-on-dark);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.auth-submit-btn:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
+}
+
+.auth-submit-btn .icon-btn {
+    margin-right: 8px;
+}
+
+.auth-register-link {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.95rem;
+}
+
+.auth-register-link a {
+    color: var(--color-primary-medium);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-register-link a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+
+/* ==================================================================== */
+/* B. MÓDULO DE DENÚNCIA (Formulário) */
+/* ==================================================================== */
+
+.fazerdenuncia-01 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--color-primary-light);
+    border-radius: 8px;
+    border-bottom: 5px solid var(--color-primary-medium);
+}
+
+.fazerdenuncia-01 h1 {
+    font-size: 2.2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fazerdenuncia-01 p {
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.form-section {
+    background-color: var(--color-text-on-dark);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    margin-bottom: 50px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+}
+
+/* Estilo para o Iframe do Mapa */
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Upload de Arquivos */
+.upload-label {
+    display: block;
+    padding: 30px;
+    border: 2px dashed var(--color-primary-medium);
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--color-primary-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #e0f2f1;
+    border-color: var(--color-primary-dark);
+}
+
+.upload-label .icon-upload {
+    font-size: 2rem;
+    color: var(--color-primary-medium);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.upload-label p {
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+input[type="file"] {
+    display: none;
+    /* Esconde o input padrão */
+}
+
+/* Botão de Envio */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-on-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Aviso de Privacidade */
+.privacy-notice {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: var(--color-privacy-bg);
+    border: 1px solid var(--color-privacy-border);
+    border-radius: 8px;
+    color: #616161;
+}
+
+/* ==================================================================== */
+/* C. MÓDULO DE DENÚNCIAS RECENTES (Listagem) */
+/* ==================================================================== */
+
+.recent-section h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-primary-medium);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* Toggle de Visualização */
+.view-toggle {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--color-primary-medium);
+    background-color: var(--color-text-on-dark);
+    color: var(--color-primary-dark);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-on-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:not(.active):hover {
+    background-color: var(--color-primary-light);
+}
+
+/* Grid e Cards */
+.complaints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.complaint-card {
+    background-color: var(--color-text-on-dark);
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--color-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--color-primary-medium);
+}
+
+.complaint-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.complaint-type {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--color-primary-light);
+    display: flex;
+    align-items: center;
+}
+
+.complaint-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: var(--color-text-on-dark);
+}
+
+.status-analysis {
+    background-color: var(--status-analysis);
+}
+
+.status-resolved {
+    background-color: var(--status-resolved);
+}
+
+/* ==================================================================== */
+/* D. RESPONSIVIDADE (@media queries) */
+/* ==================================================================== */
+
+/* Responsividade do Header/Nav */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Responsividade para Módulo de Autenticação (max-width: 450px) */
+@media (max-width: 450px) {
+    .auth-card {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+
+    .auth-header h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Responsividade para Módulo de Denúncia e Listagem (max-width: 600px) */
+@media (max-width: 600px) {
+    .fazerdenuncia-01 h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .complaints-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .view-toggle {
+        flex-direction: column;
+    }
+}

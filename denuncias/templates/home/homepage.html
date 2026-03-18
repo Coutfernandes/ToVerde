@@ -1,0 +1,114 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>O ToVerde é o seu canal direto com a natureza.</h1>
+        <p>Conectamos você à ação ambiental, transformando preocupação em resultados tangíveis.</p>
+    </div>
+</section>
+
+<section class="about-us-section">
+    <div class="container about-content">
+        <div class="image-placeholder">
+        </div>
+        <div class="text-and-button">
+            <h2>O que fazemos</h2>
+            <p>Nós, do ToVerde, acreditamos que pequenos atos geram grandes mudanças. Nossa plataforma simplifica a
+                participação de todos em projetos de reflorestamento, denúncias e educação ambiental. Junte-se a nós
+                para um futuro mais verde, justo e consciente.</p>
+            <a href="{% url 'fazerdenuncias' %}" class="btn-primary">Fazer Denúncia</a>
+        </div>
+    </div>
+</section>
+
+<section class="cards-section">
+    <div class="container">
+        <h2>O planeta precisa de você</h2>
+        <p>Seja parte da solução com estes 6 pilares de ação</p>
+
+        <div class="action-cards-grid">
+            <article class="action-card">
+                <img src="{% static 'imagem/sustentavel.png'%}" alt="Ícone Conservação">
+                <h3>Conservação e Guarda Florestal</h3>
+                <p>A união de forças para proteger o planeta. Juntos, construímos hábitos que geram impacto positivo.
+                </p>
+            </article>
+
+            <article class="action-card">
+                <img src="{% static 'imagem/reducao.png' %}" alt="Ícone Redução de Toxinas">
+                <h3>Redução de Toxinas e Poluentes</h3>
+                <p>Escolha produtos menos nocivos para solo, água e saúde humana. Substituições simples fazem diferença.
+                </p>
+            </article>
+
+            <article class="action-card">
+                <img src="{% static 'imagem/reflorestamento.png' %}" alt="Ícone Reflorestamento">
+                <h3>Reflorestamento e Vida</h3>
+                <p>Cada semente plantada é um passo para recuperar áreas degradadas e aumentar a resiliência dos
+                    ecossistemas.</p>
+            </article>
+
+            <article class="action-card">
+                <img src="{% static 'imagem/seca.png' %}" alt="Ícone Combate à Seca">
+                <h3>Combate à Seca</h3>
+                <p>Adote práticas de economia de água e reúso. Pequenas mudanças no dia a dia ajudam regiões
+                    vulneráveis.</p>
+            </article>
+
+            <article class="action-card">
+                <img src="{% static 'imagem/protecao.png' %}" alt="Ícone Proteção da Fauna">
+                <h3>Proteção da Biodiversidade</h3>
+                <p>Preservar espécies e habitats garante serviços ecossistêmicos essenciais.</p>
+            </article>
+
+            <article class="action-card">
+                <img src="{% static 'imagem/carbono.png' %}" alt="Ícone Captura de Carbono">
+                <h3>Captura de Carbono</h3>
+                <p>Plantar e proteger árvores ajuda a reduzir CO₂ na atmosfera. Apoie iniciativas de reflorestamento
+                    local.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="map-section">
+    <div class="container">
+        <h2>Explore o mapa da fiscalização</h2>
+        <div id="denuncia-map">
+            <iframe src="https://maps.google.com/maps?q=Manaus,+Amazonas,+Brasil&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<section class="community-feed-section">
+    <div class="container">
+        <h2>Denuncias Recentes da Região</h2>
+        <div class="community-cards-grid">
+            {% for denuncia in denuncias %}
+            <article class="community-card">
+                <h4>{{ denuncia.get_tipo_ocorrencia_display }}</h4>
+                <p><strong>Local:</strong> {{ denuncia.localizacao }}</p>
+                <p>{{ denuncia.descricao|truncatechars:100 }}</p>
+
+                {% if denuncia.foto %}
+                <a href="{{ denuncia.foto.url }}" target="_blank" class="view-media">Ver Foto/Vídeo</a>
+                {% endif %}
+
+                <div class="card-footer">
+                    <span class="status-badge">{{ denuncia.status }}</span>
+                    <small>{{ denuncia.data_registro|date:"d/m/Y" }}</small>
+                </div>
+            </article>
+            {% empty %}
+            <p>Ainda não há denúncias registradas.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
