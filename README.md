@@ -1,5 +1,6 @@
 👨‍💻 Autor
-Desenvolvido por Matheus CoutinhoExcelente descrição! Esse conteúdo já está muito bem estruturado. Para criar o arquivo README.md perfeito para o ToVerde no seu GitHub, vou organizar essas informações usando formatação Markdown profissional, incluindo ícones e blocos de código.
+Desenvolvido por Matheus Coutinho.
+https://www.linkedin.com/in/matheus-fernandes-coutinho-27512a328/
 
 Basta copiar o conteúdo abaixo e colar no seu arquivo README.md:
 
