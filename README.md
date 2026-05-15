@@ -1,8 +1,3 @@
-👨‍💻 Autor
-Desenvolvido por Matheus Coutinho.
-https://www.linkedin.com/in/matheus-fernandes-coutinho-27512a328/
-
-Basta copiar o conteúdo abaixo e colar no seu arquivo README.md:
 
 🌿 ToVerde - Sistema de Monitoramento Ambiental
 O ToVerde é uma plataforma full-stack desenvolvida para facilitar a denúncia e o monitoramento de crimes ambientais. O objetivo central é conectar cidadãos e autoridades para combater atividades como desmatamento, queimadas e poluição, promovendo uma fiscalização mais ágil e participativa.
